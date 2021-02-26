@@ -6,7 +6,7 @@ export default async function (req, res) {
 
     await doc.useServiceAccountAuth({
         client_email: process.env.CLIENT_EMAIL,
-        private_key: process.env.PRIVATE_KEY.replace(/\\n/gm, '\n'),
+        private_key: process.env.PRIVATE_KEY/* .replace(/\\n/gm, '\n') */,
     });
 
     await doc.loadInfo();
