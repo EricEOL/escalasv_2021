@@ -44,7 +44,7 @@ export default async function (req, res) {
         }
     })
 
-    res.send({
+    res.json({
         servicesModificated,
         whoIsServiceToday,
         whoIsServiceTomorrow
