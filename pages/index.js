@@ -109,7 +109,7 @@ function Home({ data, serviceToday, serviceTomorrow }) {
     )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
 
     const apiData = await fetch(`http://localhost:3000/api/services`)
         .then(serverResponse => {
@@ -129,8 +129,7 @@ export async function getStaticProps() {
             data: apiData.servicesModificated,
             serviceToday: apiData.whoIsServiceToday,
             serviceTomorrow: apiData.whoIsServiceTomorrow,
-        },
-        revalidate: 10000,
+        }
     }
 }
 
