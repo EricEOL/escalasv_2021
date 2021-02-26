@@ -126,9 +126,9 @@ export async function getStaticProps() {
 
     return {
         props: {
-            data: apiData.servicesModificated || null,
-            serviceToday: apiData.whoIsServiceToday || null,
-            serviceTomorrow: apiData.whoIsServiceTomorrow || null,
+            data: apiData.servicesModificated,
+            serviceToday: apiData.whoIsServiceToday,
+            serviceTomorrow: apiData.whoIsServiceTomorrow,
         },
         revalidate: 10000,
     }
