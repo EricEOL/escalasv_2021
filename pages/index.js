@@ -32,7 +32,7 @@ const RightContainer = styled.div`
 
 `;
 
-function Home({ data, serviceToday, serviceTomorrow }) {
+function Home({ data2, serviceToday, serviceTomorrow }) {
 
     return (
         <Container>
@@ -40,7 +40,7 @@ function Home({ data, serviceToday, serviceTomorrow }) {
             <ContentContainer>
                 <LeftContainer>
                     <WindowContainer title="Escala de serviço">
-                        {data.map(service => {
+                        {data2.map(service => {
                             if(service.escala === 'preta') {
                                 return (
                                     <LineBlack
@@ -126,7 +126,7 @@ export async function getStaticProps() {
 
     return {
         props: {
-            data: apiData.servicesModificated,
+            data2: apiData.servicesModificated,
             serviceToday: apiData.whoIsServiceToday,
             serviceTomorrow: apiData.whoIsServiceTomorrow,
         },
