@@ -1,30 +1,137 @@
-import {useState} from 'react';
-import Tabletop from 'tabletop';
+import React from 'react';
+import styled from 'styled-components';
+import AsideMenu from '../components/AsideMenu';
+import WindowContainer from '../components/WindowContainer';
+import {LineRed, LineBlack} from '../components/LineContainer';
 
-function Init() {
+const Container = styled.div`
+    display: flex;
 
-    const [data, setData] = useState([]);
+    width: 100%;
+    height: 100vh;
 
-    Tabletop.init({
-        key: "https://docs.google.com/spreadsheets/d/1sbyMINQHPsJctjAtMW0lCfLrcpMqoGMOJj6AN-sNQrc/pubhtml",
+    background: #E6ECEF;
+`;
 
-        callback: showInfo,
+const ContentContainer = styled.div`
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 
-        simpleSheet: true
-    });
+    width: 100%;
+`;
 
-    function showInfo(data, tabletop) {
-        console.log(data);
-        setData(data);
-    }
+const LeftContainer = styled.div`
+`;
+const RightContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    height: 70vh;
+
+`;
+
+function Home({ data, serviceToday, serviceTomorrow }) {
 
     return (
-       <>
-       {data.map(panda => (
-           <h1>{panda.title}</h1>
-       ))}
-       </> 
+        <Container>
+            <AsideMenu />
+            <ContentContainer>
+                <LeftContainer>
+                    <WindowContainer title="Escala de serviço">
+                        {data.map(service => {
+                            if(service.escala === 'preta') {
+                                return (
+                                    <LineBlack
+                                        key={service.militar}
+                                        avatar={service.avatar}
+                                        name={service.militar}
+                                        grad={service.grad}
+                                        date={service.data}
+                                    />
+                                )
+                            } else {
+                                return (
+                                    <LineRed
+                                        key={service.militar}
+                                        avatar={service.avatar}
+                                        name={service.militar}
+                                        grad={service.grad}
+                                        date={service.data}
+                                    />
+                                )
+                            }
+                        })}
+                    </WindowContainer>
+                </LeftContainer>
+                <RightContainer>
+                    <WindowContainer title="Serviço hoje">
+                        {serviceToday.escala === 'preta' && 
+                            <LineBlack
+                            avatar={serviceToday.avatar}
+                            name={serviceToday.militar}
+                            grad={serviceToday.grad}
+                            date={serviceToday.data}
+                            />
+                        }
+                        {serviceToday.escala === 'vermelha' && 
+                            <LineRed
+                            avatar={serviceToday.avatar}
+                            name={serviceToday.militar}
+                            grad={serviceToday.grad}
+                            date={serviceToday.data}
+                            />
+                        }
+                    </WindowContainer>
+
+                    <WindowContainer title="Serviço amanhã">
+                        {serviceTomorrow.escala === 'preta' && 
+                            <LineBlack
+                            avatar={serviceTomorrow.avatar}
+                            name={serviceTomorrow.militar}
+                            grad={serviceTomorrow.grad}
+                            date={serviceTomorrow.data}
+                            />
+                        }
+                        {serviceTomorrow.escala === 'vermelha' && 
+                            <LineRed
+                            avatar={serviceTomorrow.avatar}
+                            name={serviceTomorrow.militar}
+                            grad={serviceTomorrow.grad}
+                            date={serviceTomorrow.data}
+                            />
+                        }
+                    </WindowContainer>
+                </RightContainer>
+            </ContentContainer>
+        </Container>
     )
 }
 
-export default Init;
+export async function getStaticProps() {
+
+    const apiData = await fetch(`http://localhost:3000/api/servicesTabletop`)
+        .then(serverResponse => {
+            if (serverResponse.ok) {
+                return serverResponse.json()
+            }
+        })
+        .then(objectResponse => {
+            return objectResponse;
+        })
+        .catch(err => {
+            return err;
+        })
+
+    return {
+        props: {
+            data: apiData.servicesModificated,
+            serviceToday: apiData.whoIsServiceToday,
+            serviceTomorrow: apiData.whoIsServiceTomorrow,
+        },
+        revalidate: 10000,
+    }
+}
+
+export default Home;
