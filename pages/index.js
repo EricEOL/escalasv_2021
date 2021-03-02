@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import Tabletop from 'tabletop';
 import styled from 'styled-components';
 import AsideMenu from '../components/AsideMenu';
 import WindowContainer from '../components/WindowContainer';
@@ -32,7 +33,48 @@ const RightContainer = styled.div`
 
 `;
 
-function Home({ data2, serviceToday, serviceTomorrow }) {
+function Home() {
+
+    const [isServiceToday, setIsServiceToday] = useState([]);
+    const [isServiceTomorrow, setIsServiceTomorrow] = useState([]);
+    const [serviceScale, setServiceScale] = useState([]);
+
+    useEffect(()=>{
+        Tabletop.init({
+            key: "https://docs.google.com/spreadsheets/d/1IP4DHmpXKyG9zJ95e0TS7WfBqC26A_W14ek7GTGbHcA/pubhtml",
+    
+            callback: showInfo,
+    
+            simpleSheet: true
+        });
+    
+        function showInfo(data, tabletop) {
+    
+            const services = Array.from(data);
+
+            const whoIsServiceToday = services.find(service => service.today == "sim");
+            console.log(whoIsServiceToday);
+            setIsServiceToday(whoIsServiceToday);
+
+            const whoIsServiceTomorrow = services.find(service => service.id == Number(whoIsServiceToday.id) + 1);
+            setIsServiceTomorrow(whoIsServiceTomorrow);
+
+            const scaleSize = services.length;
+            const servicesModificated = services.filter(({ id, data, militar, avatar, grad, escala }, index) => {
+                if (index >= scaleSize - 4) {
+                    return {
+                        id,
+                        data,
+                        militar,
+                        avatar,
+                        grad,
+                        escala
+                    }
+                }
+            })
+            setServiceScale(servicesModificated);
+        }
+    }, [])
 
     return (
         <Container>
@@ -40,7 +82,7 @@ function Home({ data2, serviceToday, serviceTomorrow }) {
             <ContentContainer>
                 <LeftContainer>
                     <WindowContainer title="Escala de serviço">
-                        {data2.map(service => {
+                        {serviceScale.map(service => {
                             if(service.escala === 'preta') {
                                 return (
                                     <LineBlack
@@ -67,39 +109,39 @@ function Home({ data2, serviceToday, serviceTomorrow }) {
                 </LeftContainer>
                 <RightContainer>
                     <WindowContainer title="Serviço hoje">
-                        {serviceToday.escala === 'preta' && 
+                        {isServiceToday.escala === 'preta' && 
                             <LineBlack
-                            avatar={serviceToday.avatar}
-                            name={serviceToday.militar}
-                            grad={serviceToday.grad}
-                            date={serviceToday.data}
+                            avatar={isServiceToday.avatar}
+                            name={isServiceToday.militar}
+                            grad={isServiceToday.grad}
+                            date={isServiceToday.data}
                             />
                         }
-                        {serviceToday.escala === 'vermelha' && 
+                        {isServiceToday.escala === 'vermelha' && 
                             <LineRed
-                            avatar={serviceToday.avatar}
-                            name={serviceToday.militar}
-                            grad={serviceToday.grad}
-                            date={serviceToday.data}
+                            avatar={isServiceToday.avatar}
+                            name={isServiceToday.militar}
+                            grad={isServiceToday.grad}
+                            date={isServiceToday.data}
                             />
                         }
                     </WindowContainer>
 
                     <WindowContainer title="Serviço amanhã">
-                        {serviceTomorrow.escala === 'preta' && 
+                        {isServiceTomorrow.escala === 'preta' && 
                             <LineBlack
-                            avatar={serviceTomorrow.avatar}
-                            name={serviceTomorrow.militar}
-                            grad={serviceTomorrow.grad}
-                            date={serviceTomorrow.data}
+                            avatar={isServiceTomorrow.avatar}
+                            name={isServiceTomorrow.militar}
+                            grad={isServiceTomorrow.grad}
+                            date={isServiceTomorrow.data}
                             />
                         }
-                        {serviceTomorrow.escala === 'vermelha' && 
+                        {isServiceTomorrow.escala === 'vermelha' && 
                             <LineRed
-                            avatar={serviceTomorrow.avatar}
-                            name={serviceTomorrow.militar}
-                            grad={serviceTomorrow.grad}
-                            date={serviceTomorrow.data}
+                            avatar={isServiceTomorrow.avatar}
+                            name={isServiceTomorrow.militar}
+                            grad={isServiceTomorrow.grad}
+                            date={isServiceTomorrow.data}
                             />
                         }
                     </WindowContainer>
@@ -107,31 +149,6 @@ function Home({ data2, serviceToday, serviceTomorrow }) {
             </ContentContainer>
         </Container>
     )
-}
-
-export async function getStaticProps() {
-
-    const apiData = await fetch(`http://localhost:3000/api/servicesTabletop`)
-        .then(serverResponse => {
-            if (serverResponse.ok) {
-                return serverResponse.json()
-            }
-        })
-        .then(objectResponse => {
-            return objectResponse;
-        })
-        .catch(err => {
-            return err;
-        })
-
-    return {
-        props: {
-            data2: apiData.servicesModificated,
-            serviceToday: apiData.whoIsServiceToday,
-            serviceTomorrow: apiData.whoIsServiceTomorrow,
-        },
-        revalidate: 10000,
-    }
 }
 
 export default Home;
