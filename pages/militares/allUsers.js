@@ -17,6 +17,16 @@ const ContentContainer = styled.div`
     align-items: center;
 
     width: 100%;
+
+    > img {
+        width: 40px;
+        cursor: pointer;
+        transition: 0.3s;
+
+        &:hover {
+            filter: saturate(30);
+        }
+    }
 `;
 
 const Card = styled.div`
@@ -86,6 +96,7 @@ function AllUsers() {
 
     const [initial, setInitial] = useState(0);
     const [limit, setLimit] = useState(2);
+
     const [militares, setMilitares] = useState([]);
 
     useEffect(() => {
@@ -108,14 +119,14 @@ function AllUsers() {
     const militaresArrayLenght = militares.length;
 
     function changeLimitMinus() {
-        if(limit > 2 && initial > 0) {
+        if (limit > 2 && initial > 0) {
             setInitial(initial - 3);
             setLimit(limit - 3);
         }
     }
 
     function changeLimitPlus() {
-        if(initial <= militaresArrayLenght - 3) {
+        if (initial <= militaresArrayLenght - 3) {
             setInitial(initial + 3);
             setLimit(limit + 3);
         }
@@ -125,9 +136,10 @@ function AllUsers() {
         <Container>
             <AsideMenu />
             <ContentContainer>
-                <button onClick={changeLimitMinus}> - </button>
+                <img src="/left-arrow.svg" onClick={changeLimitMinus} />
+
                 {militares.map((militar, index) => {
-                    if (index >= initial && index <= limit ) {
+                    if (index >= initial && index <= limit) {
                         return (
                             <Card>
                                 <img src={militar.avatar} />
@@ -157,7 +169,7 @@ function AllUsers() {
                     }
                 })}
 
-                <button onClick={changeLimitPlus}>+</button>
+                <img src="/right-arrow.svg" onClick={changeLimitPlus} />
             </ContentContainer>
         </Container>
     )
