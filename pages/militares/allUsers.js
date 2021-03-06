@@ -1,3 +1,5 @@
+import React, { useEffect, useState } from 'react';
+import Tabletop from 'tabletop';
 import AsideMenu from '../../components/AsideMenu';
 import styled from 'styled-components';
 
@@ -5,7 +7,6 @@ const Container = styled.div`
     display: flex;
 
     width: 100%;
-    height: 100vh;
 
     background: #E6ECEF;
 `;
@@ -57,6 +58,10 @@ const Card = styled.div`
             font-size: 14px;
         }
 
+        strong {
+            text-align: center;
+        }
+
         .services-count {
             width: 50px;
             padding: 10px;
@@ -78,34 +83,81 @@ const Card = styled.div`
 
 
 function AllUsers() {
+
+    const [initial, setInitial] = useState(0);
+    const [limit, setLimit] = useState(2);
+    const [militares, setMilitares] = useState([]);
+
+    useEffect(() => {
+        Tabletop.init({
+            key: "https://docs.google.com/spreadsheets/d/1bAVYC59d1cUAKCaZsaVMN1F4wjIex8iXaqvm8tx8uu8/pubhtml",
+
+            callback: showInfo,
+
+            simpleSheet: true
+        });
+
+        function showInfo(data, tabletop) {
+
+            const militaresData = Array.from(data);
+            setMilitares(militaresData);
+        }
+
+    }, [limit]);
+
+    const militaresArrayLenght = militares.length;
+
+    function changeLimitMinus() {
+        if(limit > 2 && initial > 0) {
+            setInitial(initial - 3);
+            setLimit(limit - 3);
+        }
+    }
+
+    function changeLimitPlus() {
+        if(initial <= militaresArrayLenght - 3) {
+            setInitial(initial + 3);
+            setLimit(limit + 3);
+        }
+    }
+
     return (
         <Container>
             <AsideMenu />
             <ContentContainer>
-                <Card>
-                    <img src="https://avatars.githubusercontent.com/u/61126457?v=4"/>
-                    <div>
-                        <h2>Lopes</h2>
-                    </div>
-                    <div className="dados-militar">
-                        <div>
-                            <span>Posto</span>
-                            <strong>1º Ten</strong>
-                        </div>
-                        <div>
-                            <span>Turma</span>
-                            <strong>2014</strong>
-                        </div>
-                    </div>
-                    <div>
-                        <span>Função Atual</span>
-                        <strong>Chefe do Setor Financeiro</strong>
-                    </div>
-                    <div>
-                        <span>Serviços</span>
-                        <strong className="services-count">50</strong>
-                    </div>
-                </Card>
+                <button onClick={changeLimitMinus}> - </button>
+                {militares.map((militar, index) => {
+                    if (index >= initial && index <= limit ) {
+                        return (
+                            <Card>
+                                <img src={militar.avatar} />
+                                <div>
+                                    <h2>{militar.name}</h2>
+                                </div>
+                                <div className="dados-militar">
+                                    <div>
+                                        <span>Posto</span>
+                                        <strong>{militar.grad}</strong>
+                                    </div>
+                                    <div>
+                                        <span>Turma</span>
+                                        <strong>{militar.team}</strong>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span>Função Atual</span>
+                                    <strong>{militar.responsability}</strong>
+                                </div>
+                                <div>
+                                    <span>Serviços</span>
+                                    <strong className="services-count">{militar.qtd_services}</strong>
+                                </div>
+                            </Card>
+                        )
+                    }
+                })}
+
+                <button onClick={changeLimitPlus}>+</button>
             </ContentContainer>
         </Container>
     )

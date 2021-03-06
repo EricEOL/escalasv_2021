@@ -10,7 +10,7 @@ const AsideContainer = styled.aside`
 
     width: 130px;
     height: 100vh;
-    margin-right: 80px;
+    margin-right: 40px;
 
     background: #fff;
 
