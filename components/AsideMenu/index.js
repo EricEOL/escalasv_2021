@@ -17,12 +17,31 @@ const AsideContainer = styled.aside`
     box-shadow: 0 0 5px #00ACE0,
                 0 0 10px #00ACE0;
 
+    @media (max-width: 768px) {
+        width: 100vw;
+        height: 100%;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+
+        box-shadow: none;
+        border: none;
+    }
+
     .logo {
         display: flex;
         align-items: center;
         flex-direction: column;
 
         border-bottom: 2px solid #00ACE0;
+
+        @media (max-width: 768px) {
+            display: flex;
+            flex-direction: row;
+
+            border: none;
+        }
 
         div {
             display: flex;
@@ -33,15 +52,19 @@ const AsideContainer = styled.aside`
             span {
                 font-size: 45px;
                 font-style: italic;
-/*                 text-shadow: 0 0 5px #00ACE0,
-                            0 0 15px #00ACE0; */
+
+                @media (max-width: 768px) {
+                    font-size: 35px;
+                }
             }
 
             strong {
                 font-size: 65px;
-/*                 text-shadow: 0 0 5px #00ACE0,
-                            0 0 15px #00ACE0; */
                 color: blueviolet;
+
+                @media (max-width: 768px) {
+                    font-size: 50px;
+                }
             }
         }
 
@@ -61,6 +84,15 @@ const AsideContainer = styled.aside`
 
         margin-top: 80px;
 
+        @media (max-width: 768px) {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+
+            margin-top: 0;
+            width: 150px;
+        }
+
         > div {
             margin-bottom: 30px;
             cursor: pointer;
@@ -70,6 +102,13 @@ const AsideContainer = styled.aside`
 
             &:hover {
                 border-bottom: 2px solid #00ACE0;
+            }
+
+            @media (max-width: 768px) {
+                display: flex;
+                flex-direction: row;
+
+                margin-bottom: 0;
             }
         }
     }
@@ -85,13 +124,13 @@ export default function AsideMenu() {
             <div className="menu-items">
                 <div>
                     <Link href="/">
-                        <Image src="/calendar.svg" width={50} height={50} />
+                        <Image src="/calendar.svg" width={40} height={40} />
                     </Link>
                 </div>
 
                 <div>
                     <Link href="/militares/allUsers">
-                        <Image src="/user.svg" width={50} height={50} />
+                        <Image src="/user.svg" width={40} height={40} />
                     </Link>
                 </div>
             </div>

@@ -12,6 +12,11 @@ const Container = styled.div`
     height: 100vh;
 
     background: #E6ECEF;
+
+    @media (max-width: 768px){
+        display: flex;
+        flex-direction: column;
+    }
 `;
 
 const ContentContainer = styled.div`
@@ -20,6 +25,11 @@ const ContentContainer = styled.div`
     align-items: center;
 
     width: 100%;
+
+    @media (max-width: 768px) {
+        display: flex;
+        flex-direction: column-reverse;
+    }
 `;
 
 const LeftContainer = styled.div`
@@ -31,6 +41,9 @@ const RightContainer = styled.div`
 
     height: 70vh;
 
+    @media (max-width: 768px) {
+        height: 100%;
+    }
 `;
 
 function Home() {

@@ -11,6 +11,12 @@ const Container = styled.div`
 
     padding: 10px;
 
+    @media (max-width: 768px) {
+        width: 100vw;
+
+        margin-top: 20px;
+    }
+
     .title {
         padding: 10px;
 

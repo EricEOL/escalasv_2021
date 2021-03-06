@@ -10,6 +10,10 @@ const Container = styled.div`
     padding-bottom: 10px;
     border-top: 1px solid #E6ECEF;
 
+    @media (max-width: 768px) {
+        width: 100%;
+    }
+
     .avatar-name-grad {
         display: flex;
         align-items: center;
@@ -20,6 +24,13 @@ const Container = styled.div`
             
             margin-right: 10px;
             border-radius: 50%;
+
+            @media (max-width: 768px) {
+                width: 60px;
+                height: 60px;
+
+                margin-left: 10px;
+            }
         }
 
         .name-grad {
