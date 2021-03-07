@@ -66,7 +66,6 @@ function Home() {
             const services = Array.from(data);
 
             const whoIsServiceToday = services.find(service => service.today == "sim");
-            console.log(whoIsServiceToday);
             setIsServiceToday(whoIsServiceToday);
 
             const whoIsServiceTomorrow = services.find(service => service.id == Number(whoIsServiceToday.id) + 1);

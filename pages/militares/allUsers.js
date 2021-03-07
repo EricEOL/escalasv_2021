@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
 import Tabletop from 'tabletop';
 import AsideMenu from '../../components/AsideMenu';
 import styled from 'styled-components';
@@ -41,6 +42,7 @@ const Card = styled.div`
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 0 5px #00ACE0;
+    cursor: pointer;
 
     img {
         width: 130px;
@@ -91,13 +93,23 @@ const Card = styled.div`
     }
 `
 
+const screenStates = {
+    LOADING: 'LOADING',
+    READY: 'READY'
+}
 
 function AllUsers() {
 
+    const [screenState, setScreenState] = useState(screenStates.LOADING);
     const [initial, setInitial] = useState(0);
     const [limit, setLimit] = useState(2);
-
     const [militares, setMilitares] = useState([]);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setScreenState(screenStates.READY);
+        }, 3 * 1000)
+    }, [screenState]);
 
     useEffect(() => {
         Tabletop.init({
@@ -114,7 +126,7 @@ function AllUsers() {
             setMilitares(militaresData);
         }
 
-    }, [limit]);
+    }, []);
 
     const militaresArrayLenght = militares.length;
 
@@ -136,40 +148,49 @@ function AllUsers() {
         <Container>
             <AsideMenu />
             <ContentContainer>
-                <img src="/left-arrow.svg" onClick={changeLimitMinus} />
+                {screenState === screenStates.LOADING && (<h1>Carregando</h1>)}
 
-                {militares.map((militar, index) => {
-                    if (index >= initial && index <= limit) {
-                        return (
-                            <Card>
-                                <img src={militar.avatar} />
-                                <div>
-                                    <h2>{militar.name}</h2>
-                                </div>
-                                <div className="dados-militar">
-                                    <div>
-                                        <span>Posto</span>
-                                        <strong>{militar.grad}</strong>
-                                    </div>
-                                    <div>
-                                        <span>Turma</span>
-                                        <strong>{militar.team}</strong>
-                                    </div>
-                                </div>
-                                <div>
-                                    <span>Função Atual</span>
-                                    <strong>{militar.responsability}</strong>
-                                </div>
-                                <div>
-                                    <span>Serviços</span>
-                                    <strong className="services-count">{militar.qtd_services}</strong>
-                                </div>
-                            </Card>
-                        )
-                    }
-                })}
+                {screenState === screenStates.READY && (
+                    <>
+                        <img src="/left-arrow.svg" onClick={changeLimitMinus} />
 
-                <img src="/right-arrow.svg" onClick={changeLimitPlus} />
+                        {militares.map((militar, index) => {
+                            if (index >= initial && index <= limit) {
+                                return (
+                                    <Link href={`/militares/${militar.name}`} className="linkToUser">
+                                        <Card>
+                                            <img src={militar.avatar} />
+                                            <div>
+                                                <h2>{militar.name}</h2>
+                                            </div>
+                                            <div className="dados-militar">
+                                                <div>
+                                                    <span>Posto</span>
+                                                    <strong>{militar.grad}</strong>
+                                                </div>
+                                                <div>
+                                                    <span>Turma</span>
+                                                    <strong>{militar.team}</strong>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <span>Função Atual</span>
+                                                <strong>{militar.responsability}</strong>
+                                            </div>
+                                            <div>
+                                                <span>Serviços</span>
+                                                <strong className="services-count">{militar.qtd_services}</strong>
+                                            </div>
+                                        </Card>
+                                    </Link>
+                                )
+                            }
+                        })}
+
+                        <img src="/right-arrow.svg" onClick={changeLimitPlus} />
+                    </>
+                )}
+
             </ContentContainer>
         </Container>
     )
