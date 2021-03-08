@@ -11,6 +11,12 @@ const Container = styled.div`
     width: 100%;
 
     background: #E6ECEF;
+
+    @media (max-width: 768px) {
+        display: flex;
+        flex-direction: column;
+
+    }
 `;
 
 const ContentContainer = styled.div`
@@ -19,6 +25,18 @@ const ContentContainer = styled.div`
     align-items: center;
 
     width: 100%;
+
+    @media (max-width: 768px) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        height: 100%;
+        padding: 0;
+        margin-top: 50px;
+        margin-bottom: 50vh;
+    }
 `;
 
 
