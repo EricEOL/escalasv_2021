@@ -35,7 +35,7 @@ const ContentContainer = styled.div`
         height: 100%;
         padding: 0;
         margin-top: 50px;
-        margin-bottom: 50vh;
+        margin-bottom: 70vh;
     }
 `;
 
