@@ -10,7 +10,7 @@ const AsideContainer = styled.aside`
 
     width: 130px;
     height: 100vh;
-    margin-right: 40px;
+    margin-right: 0px;
 
     background: #fff;
 
@@ -39,6 +39,8 @@ const AsideContainer = styled.aside`
         @media (max-width: 768px) {
             display: flex;
             flex-direction: row;
+            align-items: center;
+            justify-content: center;
 
             border: none;
         }
@@ -73,6 +75,11 @@ const AsideContainer = styled.aside`
             font-size: 12px;
 
             margin-top: -10px;
+
+            @media (max-width: 768px) {
+                margin: 0;
+                margin-left: 5px;
+            }
         }
     }
 

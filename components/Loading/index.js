@@ -24,7 +24,7 @@ const LoadingAnimated = styled.div`
 
     position: relative;
     width: 200px;
-    height: 200px;
+    height: 100vh;
 
     @media (max-width: 768px) {
         width: 40%;
