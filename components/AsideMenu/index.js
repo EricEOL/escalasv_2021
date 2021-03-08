@@ -116,6 +116,7 @@ const AsideContainer = styled.aside`
                 flex-direction: row;
 
                 margin-bottom: 0;
+                margin-right: 10px;
             }
         }
     }
@@ -131,13 +132,20 @@ export default function AsideMenu() {
             <div className="menu-items">
                 <div>
                     <Link href="/">
-                        <Image src="/calendar.svg" width={40} height={40} />
+                        <Image src="/calendar.svg" width={35} height={35} />
                     </Link>
                 </div>
 
                 <div>
                     <Link href="/militares/allUsers">
-                        <Image src="/user.svg" width={40} height={40} />
+                        <Image src="/user.svg" width={35} height={35} />
+                    </Link>
+                </div>
+
+                
+                <div>
+                    <Link href="/militares/ranking">
+                        <Image src="/stage.svg" width={35} height={35} />
                     </Link>
                 </div>
             </div>

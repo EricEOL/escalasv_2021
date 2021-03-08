@@ -224,7 +224,6 @@ function AllUsers() {
         setLimit(limit + 3);
     };
 
-
     return (
         <Container>
             <AsideMenu />

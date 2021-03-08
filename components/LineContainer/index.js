@@ -1,6 +1,6 @@
 import styled, {css} from 'styled-components';
 
-const Container = styled.div`
+export const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -18,9 +18,25 @@ const Container = styled.div`
         display: flex;
         align-items: center;
 
+        > strong {
+            font-size: 30px;
+
+            color: #ddd;
+            color: ${props => props.first && css`goldenrod`};
+            color: ${props => props.second && css`silver`};
+            color: ${props => props.third && css`#e28743`};
+            
+            text-shadow: 2px 2px #000;
+
+            margin-right: 10px;
+        }
+
         img {
             width: 80px;
+            width: ${props => props.ranking && css`40px`};
+
             height: 80px;
+            height: ${props => props.ranking && css`40px`};
             
             margin-right: 10px;
             border-radius: 50%;
@@ -65,6 +81,16 @@ const Container = styled.div`
             color: #fff;
         }
     }
+
+    .qtdservices-column {
+        span {
+            padding: 8px;
+            background: #00ACE0;
+            color: #fff;
+            font-size: 20px;
+            border-radius: 4px;
+        }
+    }
 `
 
 export function LineRed({avatar, name, grad, date}) {
@@ -96,6 +122,24 @@ export function LineBlack({avatar, name, grad, date}) {
             </div>
             <div className="date-column">
                 <span>{date}</span>
+            </div>
+        </Container>
+    )
+}
+
+export function LineRanking({place, avatar, name, grad, imgRanking}) {
+    return (
+        <Container ranking>
+            <div className="avatar-name-grad">
+                <strong>{place}</strong>
+                <img src={avatar} />
+                <div className="name-grad">
+                    <p>{name}</p>
+                    <p>{grad}</p>
+                </div>
+            </div>
+            <div className="img-ranking-column">
+                <img src={imgRanking}/>
             </div>
         </Container>
     )
