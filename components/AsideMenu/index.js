@@ -19,7 +19,7 @@ const AsideContainer = styled.aside`
 
     @media (max-width: 768px) {
         width: 100vw;
-        height: 100%;
+        height: 60px;
 
         display: flex;
         flex-direction: row;

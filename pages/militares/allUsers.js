@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Tabletop from 'tabletop';
 import AsideMenu from '../../components/AsideMenu';
+import Loading from '../../components/Loading';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -91,7 +92,7 @@ const Card = styled.div`
         justify-content: space-evenly;
         width: 100%;
     }
-`
+`;
 
 const screenStates = {
     LOADING: 'LOADING',
@@ -148,7 +149,7 @@ function AllUsers() {
         <Container>
             <AsideMenu />
             <ContentContainer>
-                {screenState === screenStates.LOADING && (<h1>Carregando</h1>)}
+                {screenState === screenStates.LOADING && (<Loading/>)}
 
                 {screenState === screenStates.READY && (
                     <>
