@@ -88,74 +88,82 @@ export default function Ranking() {
             <ContentContainer>
                 {screenState === screenStates.LOADING && (<Loading />)}
 
-                <WindowContainer title="Ranking">
-                    {ranking.map((militar, index) => {
-                        if (index === 0) {
-                            return (
-                                <ContainerLineRanking ranking first>
-                                    <div className="avatar-name-grad">
-                                        <strong>{`#${index + 1}`}</strong>
-                                        <img src={militar.avatar} />
-                                        <div className="name-grad">
-                                            <p>{militar.name}</p>
-                                            <p>{militar.grad}</p>
-                                        </div>
-                                    </div>
-                                    <div className="qtdservices-column">
-                                        <span>{militar.qtd_services}</span>
-                                    </div>
-                                </ContainerLineRanking>
-                        )}
-                        if (index === 1) {
-                            return (
-                                <ContainerLineRanking ranking second>
-                                    <div className="avatar-name-grad">
-                                        <strong>{`#${index + 1}`}</strong>
-                                        <img src={militar.avatar} />
-                                        <div className="name-grad">
-                                            <p>{militar.name}</p>
-                                            <p>{militar.grad}</p>
-                                        </div>
-                                    </div>
-                                    <div className="qtdservices-column">
-                                        <span>{militar.qtd_services}</span>
-                                    </div>
-                                </ContainerLineRanking>
-                        )}
-                        if (index === 2) {
-                            return (
-                                <ContainerLineRanking ranking third>
-                                    <div className="avatar-name-grad">
-                                        <strong>{`#${index + 1}`}</strong>
-                                        <img src={militar.avatar} />
-                                        <div className="name-grad">
-                                            <p>{militar.name}</p>
-                                            <p>{militar.grad}</p>
-                                        </div>
-                                    </div>
-                                    <div className="qtdservices-column">
-                                        <span>{militar.qtd_services}</span>
-                                    </div>
-                                </ContainerLineRanking>
-                        )}
-                        if (index > 2) {
-                            return (
-                                <ContainerLineRanking ranking>
-                                    <div className="avatar-name-grad">
-                                        <strong>{`#${index + 1}`}</strong>
-                                        <img src={militar.avatar} />
-                                        <div className="name-grad">
-                                            <p>{militar.name}</p>
-                                            <p>{militar.grad}</p>
-                                        </div>
-                                    </div>
-                                    <div className="qtdservices-column">
-                                        <span>{militar.qtd_services}</span>
-                                    </div>
-                                </ContainerLineRanking>
-                        )}
-                    })}
-                </WindowContainer>
+                {screenState === screenStates.READY && (
+                    <>
+                        <WindowContainer title="Ranking">
+                            {ranking.map((militar, index) => {
+                                if (index === 0) {
+                                    return (
+                                        <ContainerLineRanking ranking first>
+                                            <div className="avatar-name-grad">
+                                                <strong>{`#${index + 1}`}</strong>
+                                                <img src={militar.avatar} />
+                                                <div className="name-grad">
+                                                    <p>{militar.name}</p>
+                                                    <p>{militar.grad}</p>
+                                                </div>
+                                            </div>
+                                            <div className="qtdservices-column">
+                                                <span>{militar.qtd_services}</span>
+                                            </div>
+                                        </ContainerLineRanking>
+                                    )
+                                }
+                                if (index === 1) {
+                                    return (
+                                        <ContainerLineRanking ranking second>
+                                            <div className="avatar-name-grad">
+                                                <strong>{`#${index + 1}`}</strong>
+                                                <img src={militar.avatar} />
+                                                <div className="name-grad">
+                                                    <p>{militar.name}</p>
+                                                    <p>{militar.grad}</p>
+                                                </div>
+                                            </div>
+                                            <div className="qtdservices-column">
+                                                <span>{militar.qtd_services}</span>
+                                            </div>
+                                        </ContainerLineRanking>
+                                    )
+                                }
+                                if (index === 2) {
+                                    return (
+                                        <ContainerLineRanking ranking third>
+                                            <div className="avatar-name-grad">
+                                                <strong>{`#${index + 1}`}</strong>
+                                                <img src={militar.avatar} />
+                                                <div className="name-grad">
+                                                    <p>{militar.name}</p>
+                                                    <p>{militar.grad}</p>
+                                                </div>
+                                            </div>
+                                            <div className="qtdservices-column">
+                                                <span>{militar.qtd_services}</span>
+                                            </div>
+                                        </ContainerLineRanking>
+                                    )
+                                }
+                                if (index > 2) {
+                                    return (
+                                        <ContainerLineRanking ranking>
+                                            <div className="avatar-name-grad">
+                                                <strong>{`#${index + 1}`}</strong>
+                                                <img src={militar.avatar} />
+                                                <div className="name-grad">
+                                                    <p>{militar.name}</p>
+                                                    <p>{militar.grad}</p>
+                                                </div>
+                                            </div>
+                                            <div className="qtdservices-column">
+                                                <span>{militar.qtd_services}</span>
+                                            </div>
+                                        </ContainerLineRanking>
+                                    )
+                                }
+                            })}
+                        </WindowContainer>
+                    </>
+                )}
             </ContentContainer>
         </Container>
     )
