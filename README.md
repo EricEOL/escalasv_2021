@@ -24,8 +24,10 @@ Aqui estão as tecnologias utilizadas nesse projeto.
  
 ### 1 - Página inicial (Escala de Serviço)
 
-![Escala_Screen_fs](https://github.com/EricEOL/escalasv_2021/blob/main/public/readme_images/index_fs.jpg)
-![Escala_Screen_sp](https://github.com/EricEOL/escalasv_2021/blob/main/public/readme_images/index_sp.jpg)
+| Desktop  |  Mobile  |
+| ------------------- | ------------------- |
+|  ![Escala_Screen_fs](https://github.com/EricEOL/escalasv_2021/blob/main/public/readme_images/index_fs.jpg) |  ![Escala_Screen_sp](https://github.com/EricEOL/escalasv_2021/blob/main/public/readme_images/index_sp.jpg) |
+
 
 ### 2 - Pessoas Cadastradas (Cards)
 
