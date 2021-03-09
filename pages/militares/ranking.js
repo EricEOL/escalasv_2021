@@ -70,8 +70,8 @@ export default function Ranking() {
             const militaresData = Array.from(data);
 
             function compare(a, b) {
-                if (a.qtd_services < b.qtd_services) return 1;
-                if (a.qtd_services > b.qtd_services) return -1;
+                if (Number(a.qtd_services) < Number(b.qtd_services)) return 1;
+                if (Number(a.qtd_services) > Number(b.qtd_services)) return -1;
                 return 0;
             }
 
