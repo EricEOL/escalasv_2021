@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="" />
+  <img src="https://github.com/EricEOL/escalasv_2021/blob/main/public/readme_images/escalex_logo.png" />
 </p>
 
 ## EscaleX (EX)
