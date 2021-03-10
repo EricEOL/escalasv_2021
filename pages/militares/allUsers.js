@@ -239,7 +239,7 @@ function AllUsers() {
                             {militares.map((militar, index) => {
                                 if (index >= initial && index <= limit) {
                                     return (
-                                        <Link href={`/militares/${militar.name}`} className="linkToUser">
+                                        <Link href={`/militares/${militar.name}`} className="linkToUser" key={militar.name}>
                                             <Card>
                                                 <img src={militar.avatar} />
                                                 <div>

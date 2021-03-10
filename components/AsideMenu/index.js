@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useEffect, useState } from 'react';
+import styled, { css } from 'styled-components';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -99,16 +99,20 @@ const AsideContainer = styled.aside`
             margin-top: 0;
             width: 150px;
         }
+    }
+`;
 
-        > div {
+const Icon = styled.div`
             margin-bottom: 30px;
             cursor: pointer;
-            border-bottom: 2px solid transparent;
+            border-bottom: 3px solid transparent;
+            border-bottom:  ${props => props.selected && css`3px solid #00ACE0`};
+            border-radius: 4px;
 
             transition: 0.3s;
 
             &:hover {
-                border-bottom: 2px solid #00ACE0;
+                border-bottom: 3px solid #00ACE0;
             }
 
             @media (max-width: 768px) {
@@ -117,37 +121,55 @@ const AsideContainer = styled.aside`
 
                 margin-bottom: 0;
                 margin-right: 10px;
+                padding: 0;
             }
-        }
-    }
-`
+`;
 
 export default function AsideMenu() {
+
+    const [escalePage, setEscalePage] = useState(false);
+    const [cardsPage, setCardsPage] = useState(false);
+    const [rankingPage, setRankingPage] = useState(false);
+
+    useEffect(() => {
+        const location = window.location.href;
+
+        console.log(location.length);
+
+        if (location.indexOf("allUsers") > 0) setCardsPage(true);
+        if (location.indexOf("ranking") > 0) setRankingPage(true);
+        if (location.indexOf("allUsers") < 0 && location.indexOf("ranking") < 0 && location.indexOf("militares") < 0) setEscalePage(true);
+        if (location.indexOf("allUsers") < 0 && location.indexOf("ranking") < 0 && location.indexOf("militares") > 0) setCardsPage(true);
+    }, [])
+
     return (
         <AsideContainer>
-            <div className="logo">
-                <div><span>E</span><strong>X</strong></div>
-                <p>EscaleX</p>
-            </div>
+
+            <Link href="/">
+                <div className="logo">
+                    <div><span>E</span><strong>X</strong></div>
+                    <p>EscaleX</p>
+                </div>
+            </Link>
+
             <div className="menu-items">
-                <div>
+                <Icon selected={escalePage}>
                     <Link href="/">
                         <Image src="/calendar.svg" width={35} height={35} />
                     </Link>
-                </div>
+                </Icon>
 
-                <div>
+                <Icon selected={cardsPage}>
                     <Link href="/militares/allUsers">
                         <Image src="/user.svg" width={35} height={35} />
                     </Link>
-                </div>
+                </Icon>
 
-                
-                <div>
+                <Icon selected={rankingPage}>
                     <Link href="/militares/ranking">
                         <Image src="/stage.svg" width={35} height={35} />
                     </Link>
-                </div>
+                </Icon>
             </div>
         </AsideContainer>
     )
