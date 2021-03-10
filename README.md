@@ -33,27 +33,21 @@ Aqui estão as tecnologias utilizadas nesse projeto.
 
 | Desktop  |  Mobile  |
 | ------------------- | ------------------- |
-|  ![Cards_Screen_fs](https://github.com/EricEOL/escalasv_2021/blob/main/public/readme_images/cards_fs.jpg)
- |  ![Cards_Screen_sp](https://github.com/EricEOL/escalasv_2021/blob/main/public/readme_images/cards_sp.jpg)
- |
+|  ![Cards_Screen_fs](https://github.com/EricEOL/escalasv_2021/blob/main/public/readme_images/cards_fs.jpg) |  ![Cards_Screen_sp](https://github.com/EricEOL/escalasv_2021/blob/main/public/readme_images/cards_sp.jpg) |
 
 
 ### 3 - Serviços já realizados individualmente
 
 | Desktop  |  Mobile  |
 | ------------------- | ------------------- |
-|  ![ServicosInd_Screen_fs](https://github.com/EricEOL/escalasv_2021/blob/main/public/readme_images/servicos_militar_fs.jpg)
- |  ![ServicosInd_Screen_sp](https://github.com/EricEOL/escalasv_2021/blob/main/public/readme_images/servicos_militar_sp.jpg)
- |
+|  ![ServicosInd_Screen_fs](https://github.com/EricEOL/escalasv_2021/blob/main/public/readme_images/servicos_militar_fs.jpg) |  ![ServicosInd_Screen_sp](https://github.com/EricEOL/escalasv_2021/blob/main/public/readme_images/servicos_militar_sp.jpg) |
 
 
 ### 4 - Ranking
 
 | Desktop  |  Mobile  |
 | ------------------- | ------------------- |
-|  ![Ranking_Screen_fs](https://github.com/EricEOL/escalasv_2021/blob/main/public/readme_images/ranking_fs.jpg)
- |  ![Ranking_Screen_sp](https://github.com/EricEOL/escalasv_2021/blob/main/public/readme_images/ranking_sp.jpg)
- |
+|  ![Ranking_Screen_fs](https://github.com/EricEOL/escalasv_2021/blob/main/public/readme_images/ranking_fs.jpg) |  ![Ranking_Screen_sp](https://github.com/EricEOL/escalasv_2021/blob/main/public/readme_images/ranking_sp.jpg) |
 
 
 ## Features
