@@ -1,5 +1,8 @@
+<p align="center">
+  <img src="" />
+</p>
 
-# EX - EscaleX
+## EscaleX (EX)
  
 O EscaleX é uma aplicação criada para atender o controle do pessoal da escala de serviço do DCMUN.
  
@@ -60,5 +63,5 @@ Aqui estão as tecnologias utilizadas nesse projeto.
 
 ## Links
  
-  - Link da aplicação em funcionamento: (https://escalasv-2021.vercel.app/)
+  - Link da aplicação em funcionamento: https://escalasv-2021.vercel.app/
   - Repositório: https://github.com/EricEOL/escalasv_2021
