@@ -20,7 +20,7 @@ Aqui estão as tecnologias utilizadas nesse projeto.
 * Vercel
 
 
-## Como utilizar
+## Screenshots
  
 ### 1 - Página inicial (Escala de Serviço)
 
@@ -31,18 +31,29 @@ Aqui estão as tecnologias utilizadas nesse projeto.
 
 ### 2 - Pessoas Cadastradas (Cards)
 
-![Cards_Screen_fs](https://github.com/EricEOL/escalasv_2021/blob/main/public/readme_images/cards_fs.jpg)
-![Cards_Screen_sp](https://github.com/EricEOL/escalasv_2021/blob/main/public/readme_images/cards_sp.jpg)
+| Desktop  |  Mobile  |
+| ------------------- | ------------------- |
+|  ![Cards_Screen_fs](https://github.com/EricEOL/escalasv_2021/blob/main/public/readme_images/cards_fs.jpg)
+ |  ![Cards_Screen_sp](https://github.com/EricEOL/escalasv_2021/blob/main/public/readme_images/cards_sp.jpg)
+ |
+
 
 ### 3 - Serviços já realizados individualmente
 
-![ServicosInd_Screen_fs](https://github.com/EricEOL/escalasv_2021/blob/main/public/readme_images/servicos_militar_fs.jpg)
-![ServicosInd_Screen_sp](https://github.com/EricEOL/escalasv_2021/blob/main/public/readme_images/servicos_militar_sp.jpg)
+| Desktop  |  Mobile  |
+| ------------------- | ------------------- |
+|  ![ServicosInd_Screen_fs](https://github.com/EricEOL/escalasv_2021/blob/main/public/readme_images/servicos_militar_fs.jpg)
+ |  ![ServicosInd_Screen_sp](https://github.com/EricEOL/escalasv_2021/blob/main/public/readme_images/servicos_militar_sp.jpg)
+ |
+
 
 ### 4 - Ranking
- 
-![Ranking_Screen_fs](https://github.com/EricEOL/escalasv_2021/blob/main/public/readme_images/ranking_fs.jpg)
-![Ranking_Screen_sp](https://github.com/EricEOL/escalasv_2021/blob/main/public/readme_images/ranking_sp.jpg)
+
+| Desktop  |  Mobile  |
+| ------------------- | ------------------- |
+|  ![Ranking_Screen_fs](https://github.com/EricEOL/escalasv_2021/blob/main/public/readme_images/ranking_fs.jpg)
+ |  ![Ranking_Screen_sp](https://github.com/EricEOL/escalasv_2021/blob/main/public/readme_images/ranking_sp.jpg)
+ |
 
 
 ## Features
@@ -57,13 +68,3 @@ Aqui estão as tecnologias utilizadas nesse projeto.
  
   - Link da aplicação em funcionamento: (https://escalasv-2021.vercel.app/)
   - Repositório: https://github.com/EricEOL/escalasv_2021
-
- 
-## Versão
- 
-1.0.0.0
- 
- 
-## Autor
- 
-* **Eric Oliveira Lopes**: @EricEOL (https://github.com/EricEOL)
