@@ -25,6 +25,8 @@ const ContentContainer = styled.div`
     align-items: center;
 
     width: 100%;
+    margin-top: 50px;
+    margin-bottom: 50px;
 
     @media (max-width: 768px) {
         display: flex;
@@ -34,7 +36,6 @@ const ContentContainer = styled.div`
 
         height: 100%;
         padding: 0;
-        margin-top: 50px;
         margin-bottom: 70vh;
     }
 `;

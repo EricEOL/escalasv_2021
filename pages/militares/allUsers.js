@@ -213,11 +213,19 @@ function AllUsers() {
             setInitial(initial - 3);
             setLimit(limit - 3);
         }
+        if(initial <= 0) {
+            setInitial(militaresArrayLenght - 2);
+            setLimit(militaresArrayLenght);
+        }
     };
     function changeLimitPlus() {
         if (initial <= militaresArrayLenght - 3) {
             setInitial(initial + 3);
             setLimit(limit + 3);
+        }
+        if (limit >= militaresArrayLenght) {
+            setInitial(0);
+            setLimit(2);
         }
     };
     function changeLimitPlusSmallScreen() {
@@ -270,7 +278,7 @@ function AllUsers() {
                             })}
                         </div>
 
-                        <button className="button-plus" onClick={changeLimitPlusSmallScreen}>+</button>
+                        {limit < militaresArrayLenght && <button className="button-plus" onClick={changeLimitPlusSmallScreen}>+</button>}
                     </>
                 )}
 

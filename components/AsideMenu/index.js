@@ -17,6 +17,8 @@ const AsideContainer = styled.aside`
     box-shadow: 0 0 5px #00ACE0,
                 0 0 10px #00ACE0;
 
+    border-bottom-right-radius: 8px;
+
     @media (max-width: 768px) {
         width: 100vw;
         height: 60px;
@@ -27,6 +29,7 @@ const AsideContainer = styled.aside`
 
         box-shadow: none;
         border: none;
+        border-bottom-right-radius: 0px;
     }
 
     .logo {
@@ -35,7 +38,8 @@ const AsideContainer = styled.aside`
         flex-direction: column;
 
         border-bottom: 2px solid #00ACE0;
-
+        cursor: pointer;
+        
         @media (max-width: 768px) {
             display: flex;
             flex-direction: row;
