@@ -22,6 +22,9 @@ Aqui estão as tecnologias utilizadas nesse projeto.
 * Github
 * Vercel
 
+## Apresentação de Funcionamento
+
+![working_gif](https://github.com/EricEOL/escalasv_2021/blob/main/public/readme_images/escalex.gif)
 
 ## Screenshots
  
